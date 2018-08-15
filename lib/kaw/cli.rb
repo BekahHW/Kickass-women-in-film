@@ -47,7 +47,11 @@ class Kaw::CLI
     input = gets.strip
 
     if input == "Y" || input == "y"
-      #open the link for the movie
+      #open the link for the movie and scrape director and screenwriter
+      puts "Here are more details:"
+      puts movie.screenwriter
+      puts movie.director
+      puts "Would you like more information about the screenwriter?"
     else
       puts "Thanks for choosing, enjoy your movie!"
     end
