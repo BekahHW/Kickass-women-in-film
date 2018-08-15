@@ -2,14 +2,16 @@ class Kaw::CLI
 
   def start
     puts "Welcome to Kickass Women in film!"
+    puts ""
     puts "Let's get started with a sample of movies with amazing female characters."
-    KawCli::Scraper.scrape_heroines
+    puts ""
+    Kaw::Scraper.scrape_heroines
     list
   end
 
   def list
     puts "Here is a list of ten movies with kickass heroines:"
-    movies = Movie.all
+    movies = Kaw::Filmography.all
 
     #TODO add the random method to select 10 random movies
     #TODO make sure the list only returns 10
@@ -36,6 +38,18 @@ class Kaw::CLI
       puts "movie.score"
     else
       puts "Try a different number from the list."
+    end
+  end
+
+  def more_info
+    puts "Would you like more info about the movie? Y/N"
+
+    input = gets.strip
+
+    if input == "Y" || input == "y"
+      #open the link for the movie
+    else
+      puts "Thanks for choosing, enjoy your movie!"
     end
   end
 
