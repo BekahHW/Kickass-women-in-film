@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
-require './lib/kaw'
+require_relative '../lib/kaw'
 
-Kaw::CLI.new.call
+Kaw::CLI.new.start

@@ -19,5 +19,25 @@ class Kaw::CLI
     select_list
   end
 
+  def select_list
+    puts "Please select a movie (using its number)"
+
+    #get the users' input without spacing
+    input = gets.strip
+
+    #convert input and only allow user to chose a number between 1 and the size of the array.
+    if index = input.to_i.between(1, Movie.size.all)
+      movie = Movie.all[index]
+
+      puts "Here are the details:"
+
+      puts "movie.title"
+      puts "movie.screenwriter"
+      puts "movie.score"
+    else
+      puts "Try a different number from the list."
+    end
+  end
+
 
 end
