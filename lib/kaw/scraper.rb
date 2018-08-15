@@ -8,5 +8,7 @@ def self.scrape_heroines
   doc.css("col-sm-20 article_movie_title h2 a").each do |movie|
 
     title = movie.css()
+  end
+end
 
 end
