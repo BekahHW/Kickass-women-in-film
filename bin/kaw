@@ -2,4 +2,4 @@
 
 require './lib/kaw'
 
-kaw::CLI.new.call
+Kaw::CLI.new.call
