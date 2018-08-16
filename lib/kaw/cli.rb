@@ -11,7 +11,7 @@ class Kaw::CLI
 
   def list
     puts "Here is a list of ten movies with kickass heroines:"
-    movies = Kaw::Filmography.all
+    movies = Kaw::Filmography.all.sample(10)
 
     #TODO add the random method to select 10 random movies
     #TODO make sure the list only returns 10
