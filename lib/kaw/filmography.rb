@@ -4,7 +4,7 @@ class Kaw::Filmography
 
   @@all = []
 
-  def initialize(title, screenwriter, director, info, score, heroine_rank)
+  def initialize(title, screenwriter, director, info, score, heroine_rank, type_of_credit)
     @title = title
     @screenwriter = screenwriter
     @director = director

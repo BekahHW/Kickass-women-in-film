@@ -1,3 +1,4 @@
+require 'pry'
 class Kaw::CLI
 
   def start
@@ -11,13 +12,13 @@ class Kaw::CLI
 
   def list
     puts "Here is a list of ten movies with kickass heroines:"
-    movies = Kaw::Filmography.all.sample(10)
+    @movies = Kaw::Filmography.all.sample(10)
 
     #TODO add the random method to select 10 random movies
     #TODO make sure the list only returns 10
-
+# binding.pry
     #iterates over each of the movies in the @@all array, and creates a numbered list.
-    movies.each.with_index(1) {|movie, i|  puts "#{i}. #{movie.title}"}
+    @movies.each.with_index(1) {|movie, i|  puts "#{i}. #{movie.title} - heroine rank #{movie.heroine_rank} - overall rank #{movie.rank}"}
     select_list
   end
 
@@ -28,8 +29,8 @@ class Kaw::CLI
     input = gets.strip
 
     #convert input and only allow user to chose a number between 1 and the size of the array.
-    if index = input.to_i.between(1, Movie.size.all)
-      movie = Movie.all[index]
+    if index = input.to_i.between?(1, Kaw::Filmography.all.size)
+      movie = Kaw::Filmography.all[index]
 
       puts "Here are the details:"
 
