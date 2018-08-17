@@ -1,17 +1,15 @@
 class Kaw::Filmography
 
-  attr_accessor :title, :screenwriter, :director, :info, :score, :heroine_rank
+  attr_accessor :title, :screenwriter, :director, :info, :score, :heroine_rank, :movie_url
 
   @@all = []
 
-  def initialize(title, screenwriter, director, info, score, heroine_rank, type_of_credit)
+  def initialize(title, heroine_rank, score, movie_url)
     @title = title
-    @screenwriter = screenwriter
-    @director = director
-    @info = info
     @score = score
     @heroine_rank = heroine_rank
-    @type_of_credit = type_of_credit
+    @movie_url = movie_url
+
     @@all << self
   end
 
@@ -32,5 +30,17 @@ end
       puts "Try another screenwriter."
     end
   end
+
+  def save
+    @@all << self
+  end
+
+  # def self.create(title, heroine_rank, score)
+  #   movie =  self.new(title, heroine_rank, score)
+  #   movie.save
+  #   movies
+  # end
+
+
 
 end

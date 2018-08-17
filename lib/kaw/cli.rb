@@ -1,6 +1,8 @@
 require 'pry'
 class Kaw::CLI
 
+  attr_accessor :filmography
+
   def start
     puts "Welcome to Kickass Women in film!"
     puts ""
@@ -13,34 +15,71 @@ class Kaw::CLI
   def list
     puts "Here is a list of ten movies with kickass heroines:"
     @movies = Kaw::Filmography.all.sample(10)
+    # binding.pry
 
     #TODO add the random method to select 10 random movies
     #TODO make sure the list only returns 10
 # binding.pry
     #iterates over each of the movies in the @@all array, and creates a numbered list.
-    @movies.each.with_index(1) {|movie, i|  puts "#{i}. #{movie.title} - heroine rank #{movie.heroine_rank} - overall rank #{movie.rank}"}
-    select_list
+    @movies.each.with_index(1) {|movie, i|  puts "#{i}. #{movie.title} - heroine rank #{movie.heroine_rank} - overall score #{movie.score}"}
+
+    puts ""
+    puts "Please select a movie (using its title)"
+
+# @sample = @movies.each {|movie| Kaw::Filmography.title}
+
+    input = gets.strip
+binding.pry
+
+if   Kaw::Filmography.all.detect {|t| }
+
+        puts movie.title
+        puts movie.screenwriter
+        puts movie.score
+    elsif
+      input = exit
+      puts "Thank you for using Badass Women in Film"
+    else
+      puts ""
+      puts "Try a different title from the list."
+      puts ""
+      list
+
   end
+
+    # select_list
+  end
+
+  # def self.find_by_title(filmography)
+  #     Kaw::Filmography.all.select {|t| t.title == title}
+  # end
 
   def select_list
-    puts "Please select a movie (using its number)"
+    puts ""
+    puts "Please select a movie (using its title)"
 
     #get the users' input without spacing
-    input = gets.strip
+    # input = gets.strip
+  end
+
+    #if title entered matches title on the list
+    # if input == Kaw::CLI.find_by_title(filmography)
 
     #convert input and only allow user to chose a number between 1 and the size of the array.
-    if index = input.to_i.between?(1, Kaw::Filmography.all.size)
-      movie = Kaw::Filmography.all[index]
+    # if input.to_i.between?(1, 10)
+    #   index = input.to_i - 1
 
-      puts "Here are the details:"
+      # movie = Kaw::Filmography.all[index]
 
-      puts "movie.title"
-      puts "movie.screenwriter"
-      puts "movie.score"
-    else
-      puts "Try a different number from the list."
-    end
-  end
+  #     puts "Here are the details:"
+  #
+  #       puts movie.title
+  #       puts movie.screenwriter
+  #       puts movie.score
+  #   else
+  #     puts "Try a different number from the list."
+  #   end
+  # end
 
   def more_info
     puts "Would you like more info about the movie? Y/N"

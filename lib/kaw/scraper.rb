@@ -10,17 +10,12 @@ def self.scrape_heroines
   content.css(".clearfix").each do |movie|
       # binding.pry
 
-    title = movie.css("a").text
-
     title = movie.css("a").text.strip
     score = movie.css(".tMeterScore").text
     heroine_rank = movie.css(".edit-rank").text
-    screenwriter = nil
-    info = nil
-    director = nil
-    type_of_credit = nil
+    movie_url = movie.css("a")[0].attr("href")
 
-    Kaw::Filmography.new(title, screenwriter, director, info, score, heroine_rank, type_of_credit)
+    Kaw::Filmography.new(title, heroine_rank, score, movie_url)
     end
   end
 end
