@@ -4,14 +4,13 @@ class Kaw::Filmography
 
   @@all = []
 
-  # def initialize(title, heroine_rank, score, movie_url)
-  #   @title = title
-  #   @score = score
-  #   @heroine_rank = heroine_rank
-  #   @movie_url = movie_url
-  #
-  #   @@all << self
-  # end
+def open_in_browser
+  system("open '#{movie_url}'")
+end
+
+def content
+  @content ||= Kaw::Scraper.new(movie_url).scrape_content
+end
 
   def self.all
     @@all
@@ -34,13 +33,4 @@ class Kaw::Filmography
   def save
     @@all << self
   end
-
-  # def self.create(title, heroine_rank, score)
-  #   movie =  self.new(title, heroine_rank, score)
-  #   movie.save
-  #   movies
-  # end
-
-
-
 end

@@ -1,6 +1,16 @@
 require 'pry'
 class Kaw::Scraper
 
+  def initialize(movie_url = nil)
+    @movie_url = movie_url
+  end
+
+  def scrape_content
+    @doc = Nokogiri::HTML(open(@movie_url))
+    @doc.search(".div.panel_body content_body").text
+  end
+
+
 BASE_URL = "https://editorial.rottentomatoes.com/article/fearless-female-movie-heroes-who-inspire-us/"
 
 # def self.scrape_heroines

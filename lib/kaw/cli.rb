@@ -8,12 +8,13 @@ class Kaw::CLI
     puts ""
     puts "Let's get started with a sample of movies with amazing female characters."
     puts ""
+    Kaw::Scraper.scrape_heroines
     list
   end
 
   def list
     puts "Here is a list of ten movies with kickass heroines:"
-    Kaw::Scraper.scrape_heroines
+
     movies = Kaw::Filmography.all.sample(10)
     #iterates over each of the movies in the @@all array, and creates a numbered list.
     movies.each.with_index(1) do |movie, i|
@@ -28,30 +29,26 @@ class Kaw::CLI
     puts "Which movie would you like to know more about?"
 
     # @sample = movies.each {|movie| movie.title == input}
-
     input = gets.strip
 
     if input.to_i.between?(1, movies.length)
       index = input.to_i - 1
-      # if it is, display movie
-      # binding.pry
 
       selected = movies[index]
-      # Kaw::Filmography.all[index]
-      # selected.each do |movie|
 
       puts "Overall Score: #{selected.score}"
       puts "#{selected.info}"
 
-       # puts "Here's the info:"
-       #
-       # Kaw::Scraper.scrape_indiv_movies
+      puts ""
+      puts "Would you like to see more?"
+      puts ""
+      puts "Y/N"
+      answer = gets.strip
+      if ["Y"].include?(answer.upcase)
+        # content = Kaw::Filmography.scrape_content(url)
+        selected.open_in_browser
 
-       # #put info from the indiv movies page
-       #      puts movies.info
-       #      puts movies.screenwriter
-       #      puts movies.score
-     # end
+
         elsif
           input == "exit"
           puts "Thank you for using Badass Women in Film"
@@ -63,7 +60,13 @@ class Kaw::CLI
         end
       end
 
+      def to_page
 
+
+
+          filmography.open_in_browser
+        end
+        end
   end
 
     #if title entered matches title on the list
