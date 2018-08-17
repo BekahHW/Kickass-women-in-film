@@ -15,32 +15,17 @@ class Kaw::CLI
     puts "Here is a list of ten movies with kickass heroines:"
     Kaw::Scraper.scrape_heroines
     movies = Kaw::Filmography.all.sample(10)
-
-    # all.sample(10)
-    # binding.pry
-
-    #TODO add the random method to select 10 random movies
-    #TODO make sure the list only returns 10
-# binding.pry
     #iterates over each of the movies in the @@all array, and creates a numbered list.
     movies.each.with_index(1) do |movie, i|
-      puts "#{i}. #{movie.title} - heroine rank #{movie.heroine_rank} - overall score #{movie.score}"
+      puts "#{i}. #{movie.title}"
+      # - heroine rank #{movie.heroine_rank} - overall score #{movie.score}
     end
     select_list(movies)
   end
 
-
-#    puts ""
-#     puts "Please select a movie (using its title)"
-#
-# #
-#   # def self.find_by_title(filmography)
-#   #     Kaw::Filmography.all.select {|t| t.title == title}
-#   # end
-#
   def select_list(movies)
     puts ""
-    puts "Please select a movie"
+    puts "Which movie would you like to know more about?"
 
     # @sample = movies.each {|movie| movie.title == input}
 
@@ -51,15 +36,22 @@ class Kaw::CLI
       # if it is, display movie
       # binding.pry
 
-      movies[index]
+      selected = movies[index]
       # Kaw::Filmography.all[index]
+      # selected.each do |movie|
 
-       puts "Here's the info"
+      puts "Overall Score: #{selected.score}"
+      puts "#{selected.info}"
+
+       # puts "Here's the info:"
+       #
        # Kaw::Scraper.scrape_indiv_movies
+
        # #put info from the indiv movies page
        #      puts movies.info
        #      puts movies.screenwriter
        #      puts movies.score
+     # end
         elsif
           input == "exit"
           puts "Thank you for using Badass Women in Film"

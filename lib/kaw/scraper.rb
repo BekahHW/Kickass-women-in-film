@@ -38,7 +38,8 @@ def self.scrape_heroines
     movie.title = each_movie.search("a").text.strip
     movie.score = each_movie.search(".tMeterScore").text
     movie.heroine_rank = each_movie.search(".edit-rank").text
-    movie.movie_url = each_movie.search("a")[0].attr("href")
+    movie.movie_url = each_movie.search("a").attr("href")
+    movie.info = each_movie.search(".col-sm-20").text
 
 
     movie.save
