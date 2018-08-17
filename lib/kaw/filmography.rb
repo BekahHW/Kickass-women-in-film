@@ -4,32 +4,32 @@ class Kaw::Filmography
 
   @@all = []
 
-  def initialize(title, heroine_rank, score, movie_url)
-    @title = title
-    @score = score
-    @heroine_rank = heroine_rank
-    @movie_url = movie_url
-
-    @@all << self
-  end
+  # def initialize(title, heroine_rank, score, movie_url)
+  #   @title = title
+  #   @score = score
+  #   @heroine_rank = heroine_rank
+  #   @movie_url = movie_url
+  #
+  #   @@all << self
+  # end
 
   def self.all
     @@all
   end
-
-  def self.find_movie_by_name(title)
-    if  self.all.find {|movie| movie.title == title}
-    else
-      puts "Try another movie with a kickass heroine!"
-  end
-end
-
-  def self.find_movie_by_screenwriter(screenwriter)
-    if self.all.find {|movie| movie.screenwriter == screenwriter}
-    else
-      puts "Try another screenwriter."
-    end
-  end
+#
+#   def self.find_movie_by_name(title)
+#     if  self.all.find {|movie| movie.title == title}
+#     else
+#       puts "Try another movie with a kickass heroine!"
+#   end
+# end
+#
+#   def self.find_movie_by_screenwriter(screenwriter)
+#     if self.all.find {|movie| movie.screenwriter == screenwriter}
+#     else
+#       puts "Try another screenwriter."
+#     end
+#   end
 
   def save
     @@all << self
