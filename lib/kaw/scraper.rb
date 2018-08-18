@@ -1,6 +1,8 @@
 require 'pry'
 class Kaw::Scraper
 
+  BASE_URL = "https://editorial.rottentomatoes.com/article/fearless-female-movie-heroes-who-inspire-us/"
+
   def initialize(movie_url = nil)
     @movie_url = movie_url
   end
@@ -11,51 +13,27 @@ class Kaw::Scraper
   end
 
 
-BASE_URL = "https://editorial.rottentomatoes.com/article/fearless-female-movie-heroes-who-inspire-us/"
+  def self.scrape_heroines
+    @doc = Nokogiri::HTML(open(BASE_URL))
 
-# def self.scrape_heroines
-#   doc = Nokogiri::HTML(open(BASE_URL))
-#
-#   doc.css(".articleContentBody").each do |content|
-#   content.css(".clearfix").each do |movie|
-#
-#   movie = Kaw::Filmography.new
-#     # (title, score, heroine_rank, movie_url)
-#
-#
-#     movie.title = movie.css("a").text.strip
-#     movie.score = movie.css(".tMeterScore").text
-#     movie.heroine_rank = movie.css(".edit-rank").text
-#     movie.movie_url = movie.css("a")[0].attr("href")
-#
-#
-#     movie.save
-#
-#     end
-#   end
-# end
+    # doc.css(".articleContentBody").each do |content|
+    @doc.search(".articleContentBody .clearfix").each do |each_movie|
 
-def self.scrape_heroines
-  @doc = Nokogiri::HTML(open(BASE_URL))
-
-  # doc.css(".articleContentBody").each do |content|
-  @doc.search(".clearfix").each do |each_movie|
-
-  movie = Kaw::Filmography.new
-    # (title, score, heroine_rank, movie_url)
+    movie = Kaw::Filmography.new
+      # (title, score, heroine_rank, movie_url)
 
 
-    movie.title = each_movie.search("a").text.strip
-    movie.score = each_movie.search(".tMeterScore").text
-    movie.heroine_rank = each_movie.search(".edit-rank").text
-    movie.movie_url = each_movie.search("a").attr("href")
-    movie.info = each_movie.search(".col-sm-20 p").text
-    movie.year = each_movie.search("h2 .subtle").text
+      movie.title = each_movie.search("a").text.strip
+      movie.score = each_movie.search(".tMeterScore").text
+      movie.heroine_rank = each_movie.search(".edit-rank").text
+      movie.movie_url = each_movie.search("a").attr("href")
+      movie.info = each_movie.search(".col-sm-20 p").text
+      movie.year = each_movie.search("h2 .subtle").text
 
 
-    movie.save
+      movie.save
+    end
   end
-end
 
 
   def self.scrape_indiv_movies
