@@ -35,9 +35,12 @@ class Kaw::CLI
       index = input.to_i - 1
 
       selected = movies[index]
-
-      puts "Overall Score: #{selected.score}"
-      puts "#{selected.info}"
+# binding.pry
+      puts "#{selected.title}"
+      puts "OVERALL SCORE: #{selected.score}"
+      puts "YEAR: puts #{selected.year}"
+      puts ""
+      puts "HEROINE SCORE AND SUMMARY: #{selected.info}"
 
       puts ""
       puts "Would you like to see more?"

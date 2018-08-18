@@ -49,7 +49,8 @@ def self.scrape_heroines
     movie.score = each_movie.search(".tMeterScore").text
     movie.heroine_rank = each_movie.search(".edit-rank").text
     movie.movie_url = each_movie.search("a").attr("href")
-    movie.info = each_movie.search(".col-sm-20").text
+    movie.info = each_movie.search(".col-sm-20 p").text
+    movie.year = each_movie.search("h2 .subtle").text
 
 
     movie.save
