@@ -1,28 +1,16 @@
 # Kaw
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/kaw`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Welcome to Kaw (Kickass Women - in film)! This Ruby Gem provides a CLI that provides a list of ten movies that have amazing women characters. From that list, you can choose to learn more by choosing a movie. For all the great details, you can choose to learn more again to open a new window to take you to the rottentomatoes.com page.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'kaw'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install kaw
+You can clone this repo by copying and pasting git@github.com:BekahHW/Kickass-women-in-film.git in your command line.
 
 ## Usage
 
-TODO: Write usage instructions here
+In the command line, type the below and follow the on screen prompts.
+
+$ ruby bin/kaw
 
 ## Development
 
