@@ -8,9 +8,9 @@ def open_in_browser
   system("open '#{movie_url}'")
 end
 
-def content
-  @content ||= Kaw::Scraper.new(movie_url).scrape_content
-end
+# def content
+#   @content ||= Kaw::Scraper.new(movie_url).scrape_content
+# end
 
   def self.all
     @@all

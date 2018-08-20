@@ -62,12 +62,12 @@ class Kaw::CLI
 
         puts "Would you like to go to the movie page?"
         puts ""
-        puts "Yes/No"
+        puts "Y/N"
 
         response = gets.strip
-binding.pry
 
-          if ["Yes"].include?(response.upcase)
+
+          if ["Y"].include?(response.upcase)
 
             puts "#{selected.open_in_browser}"
 
