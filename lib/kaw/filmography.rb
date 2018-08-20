@@ -1,6 +1,6 @@
 class Kaw::Filmography
 
-  attr_accessor :title, :info, :score, :heroine_rank, :movie_url, :year
+  attr_accessor :title, :info, :score, :heroine_rank, :movie_url, :year, :additional_details, :extended_movie_details
 
   @@all = []
 

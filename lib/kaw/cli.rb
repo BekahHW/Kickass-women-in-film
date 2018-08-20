@@ -38,8 +38,10 @@ class Kaw::CLI
 # binding.pry
       puts "#{selected.title}"
       puts "OVERALL SCORE: #{selected.score}"
-      puts "YEAR: puts #{selected.year}"
+      puts "YEAR: #{selected.year}"
       puts ""
+      # binding.pry
+      #if the third place in the string is a number, gsub space, elsif the second space is a number, gsub space, else do nothing.
       puts "HEROINE SCORE AND SUMMARY: #{selected.info}"
 
       puts ""
@@ -48,9 +50,26 @@ class Kaw::CLI
       puts "Y/N"
       answer = gets.strip
       if ["Y"].include?(answer.upcase)
-        # content = Kaw::Filmography.scrape_content(url)
-        selected.open_in_browser
+          # binding.pry
+        Kaw::Scraper.scrape_heroines
 
+        # content = Kaw::Filmography.scrape_content(url)
+        # Need to scrape new info from second page
+        # master: selected.open_in_browser
+
+        puts "#{selected.extended_movie_details}"
+        # binding.pry
+
+        puts "Would you like to go to the movie page?"
+        puts ""
+        puts "Yes/No"
+
+        response = gets.strip
+binding.pry
+
+          if ["Yes"].include?(response.upcase)
+
+            puts "#{selected.open_in_browser}"
 
         elsif
           input == "exit"
@@ -62,14 +81,17 @@ class Kaw::CLI
           list
         end
       end
+    end
+  end
+      # end
 
-      def to_page
-
-
-
-          filmography.open_in_browser
-        end
-        end
+      # def to_page
+      #
+      #
+      #
+      #     filmography.open_in_browser
+      #   end
+      #   end
   end
 
     #if title entered matches title on the list
